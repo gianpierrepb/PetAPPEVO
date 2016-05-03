@@ -28,7 +28,7 @@ namespace ParcialEvo.Controllers
         }
         public ActionResult Login()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your login page.";
 
             return View();
         }
