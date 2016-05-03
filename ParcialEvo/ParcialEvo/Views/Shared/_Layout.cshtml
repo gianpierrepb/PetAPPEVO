@@ -7,8 +7,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="images/favicon.ico">
-    <title>Carousel Template for Bootstrap</title>
+    <link rel="icon" href="@Url.Content("~/Content/images/favicon.ico")">
+    ><title>Carousel Template for Bootstrap</title>
     <!-- Bootstrap core CSS -->
     <link href="@Url.Content("~/Content/dist/css/bootstrap.min.css")" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -108,9 +108,11 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div><!-- /.carousel -->
+           
             <div>
                 <h2 class="featurette-heading" style="margin-top: 0px; margin-bottom: 50px; text-align: center; ">Join the largest pet network</h2>
             </div>
+            @RenderBody()
 
         </div><!-- /.blog-main -->
     </div><!-- /.row -->
