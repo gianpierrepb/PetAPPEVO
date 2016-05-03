@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="$1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>${2:Untitled}</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="author" href="humans.txt">
+</head>
+<body>
+
+
+    <form method="POST">
+        email: <input type="text" name="email" id="email"><br>
+        password: <input type="text" name="password" id="password"><br>
+        <button type="button" onclick="loadDoc()">Change Content</button>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        function loadDoc() {
+
+            var email_val = $('#email').val();
+            var password_val = $('#password').val();
+            var formData = { email: email_val, password: password_val }; //Array
+
+            $.ajax({
+                url: "http://ec2-52-36-25-213.us-west-2.compute.amazonaws.com/evoserv/public/api/login",
+                type: "POST",
+                data: formData,
+                success: function (data, textStatus, jqXHR) {
+                    console.log(data);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR.responseJSON);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
