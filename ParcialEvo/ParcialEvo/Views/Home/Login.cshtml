@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ParcialEvo.Models.LoginViewModel
+
+@{
     ViewBag.Title = "Login";
 }
 <!Doctype html>
@@ -12,20 +14,23 @@
     <link rel="author" href="humans.txt">
 </head>
 <body>
-
-
-    <form method="POST">
-        email: <input type="text" name="email" id="email"><br>
-        password: <input type="text" name="password" id="password"><br>
-        <button type="button" onclick="loadDoc()">Change Content</button>
+    <form id="myform" action="/Home/Index" method="post">
+        @Html.ActionLink("Inicio", "Index");
+        @using (Html.BeginForm())
+        {
+            <p>Username: @Html.TextBoxFor(x => x.UserName) </p>
+            <p>Password: @Html.TextBoxFor(x => x.Password)  </p>
+            @Html.HiddenFor(x => x.Nombre)
+            <input type="button" onclick="loadDoc()" value="Enviar" />
+        }
     </form>
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
         function loadDoc() {
 
-            var email_val = $('#email').val();
-            var password_val = $('#password').val();
+            var email_val = $('#UserName').val();
+            var password_val = $('#Password').val();
             var formData = { email: email_val, password: password_val }; //Array
 
             $.ajax({
@@ -34,7 +39,9 @@
                 data: formData,
                 success: function (data, textStatus, jqXHR) {
                     console.log(data);
-                    window.location.replace("Index");
+                    $('#Nombre').val(data.name);
+                    $('form#myform').submit();
+                    //window.location.replace("Index");
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(jqXHR.responseJSON);

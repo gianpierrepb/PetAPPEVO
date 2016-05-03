@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ParcialEvo.Models;
 
 namespace ParcialEvo.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ViewResult Index(LoginViewModel login)
+        {
+            //login.Nombre = "Carlos";
+            return View("Index", login);
         }
 
         public ActionResult About()
