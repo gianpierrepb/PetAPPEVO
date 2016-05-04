@@ -19,7 +19,7 @@
         @using (Html.BeginForm())
         {
             <p>Username: @Html.TextBoxFor(x => x.UserName) </p>
-            <p>Password: @Html.TextBoxFor(x => x.Password)  </p>
+            <p>Password: @Html.PasswordFor(x => x.Password)  </p>
             @Html.HiddenFor(x => x.Nombre)
             <input type="button" onclick="loadDoc()" value="Enviar" />
         }
