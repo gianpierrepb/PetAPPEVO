@@ -18,7 +18,7 @@ namespace ParcialEvo.Controllers
         [HttpPost]
         public ViewResult Index(LoginViewModel login)
         {
-            //login.Nombre = "Carlos";
+            //login.Nombre = "Hans";
             return View("Index", login);
         }
 
