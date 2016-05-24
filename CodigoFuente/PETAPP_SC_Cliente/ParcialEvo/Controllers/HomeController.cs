@@ -14,6 +14,7 @@ namespace ParcialEvo.Controllers
         {
             return View();
         }
+        
 
         [HttpPost]
         public ViewResult Index(LoginViewModel login)
@@ -34,6 +35,12 @@ namespace ParcialEvo.Controllers
         {
             ViewBag.Message = "Your login page.";
 
+            return View();
+        }
+
+        public ActionResult RegistrarUsuario()
+        {
+            ViewBag.Message = "Your register login page";
             return View();
         }
     }
