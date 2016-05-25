@@ -43,5 +43,10 @@ namespace ParcialEvo.Controllers
             ViewBag.Message = "Your register login page";
             return View();
         }
+        public ActionResult RegistrarMascota()
+        {
+            ViewBag.Message = "Your register pet page";
+            return View();
+        }
     }
 }

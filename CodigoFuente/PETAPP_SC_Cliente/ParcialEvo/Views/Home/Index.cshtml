@@ -1,9 +1,13 @@
-﻿@{
+﻿@model ParcialEvo.Models.LoginViewModel
+
+@{
     ViewBag.Title = "Home Page";
     Layout = null;
+    if(Model == null)
+    {
+        Response.Redirect("Login");
+    }
 }
-@model ParcialEvo.Models.LoginViewModel
-<h2>Bienvenido @Model.Nombre</h2>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,10 +62,13 @@
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <h4>Bienvenido @Model.Nombre   </h4>
+                    @if (Model != null)
+                    {
+                        <h4>Bienvenido @Model.Nombre</h4>
+                    }                  
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contactos</a></li>
-                    <li class="active"><a href="./">Cerrar Sesion <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="#" onclick="doLogout()">Cerrar Sesion <span class="sr-only">(current)</span></a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -163,5 +170,22 @@
     <script src="@Url.Content("~/Content/assets/js/vendor/holder.min.js")"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="@Url.Content("~/Content/assets/js/ie10-viewport-bug-workaround.js")"></script>
+
+    <script>
+        function doLogout() {
+            console.log('Entro');
+            $.ajax({
+                url: "http://ec2-52-40-149-74.us-west-2.compute.amazonaws.com/api/logout",
+                type: "POST",
+                data: {},
+                success: function (data, textStatus, jqXHR) {
+                    location.href = 'Login';
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR.responseJSON);
+                }
+            });
+        }
+    </script>
 </body>
 </html>
