@@ -14,13 +14,12 @@ namespace ParcialEvo.Controllers
         {
             return View();
         }
-        
 
         [HttpPost]
         public ViewResult Index(LoginViewModel login)
         {
-            //login.Nombre = "Hans";
-            return View("Index", login);
+            Session["LOGIN"] = login;
+            return View("Index");
         }
 
         public ActionResult About()
@@ -34,13 +33,23 @@ namespace ParcialEvo.Controllers
         public ActionResult Login()
         {
             ViewBag.Message = "Your login page.";
-
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session["LOGIN"] = null;
+            return View("Login");
         }
 
         public ActionResult RegistrarUsuario()
         {
             ViewBag.Message = "Your register login page";
+            return View();
+        }
+
+        public ActionResult RegistrarMascota()
+        {
             return View();
         }
     }

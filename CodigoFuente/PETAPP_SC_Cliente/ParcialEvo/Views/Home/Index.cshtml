@@ -1,9 +1,12 @@
-﻿@model ParcialEvo.Models.LoginViewModel
+﻿@using ParcialEvo.Models
 
 @{
     ViewBag.Title = "Home Page";
     Layout = null;
-    if(Model == null)
+
+    var Login = Session["LOGIN"] as LoginViewModel;
+
+    if (Login == null)
     {
         Response.Redirect("Login");
     }
@@ -54,7 +57,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <h4>PETapp</h4>
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="@Url.Action("Index")">Home</a></li>
                     <li><a href="@Url.Action("RegistrarMascota")">Perfil</a></li>
                     <li><a href="">Buscar  Perro</a></li>
                     <li><a href="">Puesto mascota</a></li>
@@ -62,13 +65,13 @@
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    @if (Model != null)
+                    @if (Login != null)
                     {
-                        <h4>Bienvenido @Model.Nombre</h4>
+                        <h4>Bienvenido @Login.Nombre</h4>
                     }                  
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contactos</a></li>
-                    <li class="active"><a href="#" onclick="doLogout()">Cerrar Sesion <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a id="logout" href="@Url.Action("Logout")" onclick="doLogout()">Cerrar Sesion <span class="sr-only">(current)</span></a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -179,7 +182,8 @@
                 type: "POST",
                 data: {},
                 success: function (data, textStatus, jqXHR) {
-                    location.href = 'Login';
+                    var ruta = $("a#logout").attr("href");
+                    location.href = ruta;
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(jqXHR.responseJSON);
