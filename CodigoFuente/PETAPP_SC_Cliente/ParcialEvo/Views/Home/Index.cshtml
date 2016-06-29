@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="images/favicon.ico">
-    <title>Carousel Template for Bootstrap</title>
+    <title>PettAPP</title>
     <!-- Bootstrap core CSS -->
     <link href="@Url.Content("~/Content/dist/css/bootstrap.min.css")" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -55,11 +55,11 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <h4>PETapp</h4>
-                    <li class="active"><a href="@Url.Action("Index")">Home</a></li>
-                    <li><a href="@Url.Action("RegistrarMascota")">Perfil</a></li>
-                    <li><a href="">Buscar  Perro</a></li>
-                    <li><a href="">Puesto mascota</a></li>
+                    <h4>PetApp</h4>
+                    <li class="active"><a href="@Url.Action("Index")">Inicio</a></li>
+                    <li><a href="@Url.Action("RegistrarMascota")">Registrar Mascota</a></li>
+                    <li><a href="@Url.Action("BuscarMascota")">Buscar Mascota</a></li>
+                    <li><a href="">Puesto mascota</a></li><!--para que es esto??-->
 
 
                 </ul>
@@ -68,7 +68,7 @@
                     {
                         <h4>Bienvenido @Login.Nombre</h4>
                     }                  
-                    <li><a href="#about">About</a></li>
+                    <li><a href="@Url.Action("About")">Acerca de PetApp</a></li>
                     <li><a href="#contact">Contactos</a></li>
                     <li class="active"><a id="logout" href="@Url.Action("Logout")" onclick="doLogout()">Cerrar Sesion <span class="sr-only">(current)</span></a></li>
                 </ul>
