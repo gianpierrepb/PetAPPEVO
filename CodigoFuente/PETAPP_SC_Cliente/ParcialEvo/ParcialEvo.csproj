@@ -275,6 +275,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\RegistrarUsuario.cshtml" />
     <Content Include="Views\Home\RegistrarMascota.cshtml" />
+    <Content Include="Views\Home\BuscarMascota.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
