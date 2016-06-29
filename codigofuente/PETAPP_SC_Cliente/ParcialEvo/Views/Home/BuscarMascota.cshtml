@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="images/favicon.ico">
-    <title>Carousel Template for Bootstrap</title>
+    <title>PettAPP</title>
     <!-- Bootstrap core CSS -->
     <link href="@Url.Content("~/Content/dist/css/bootstrap.min.css")" rel="stylesheet">
     ><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -49,19 +49,22 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <h4>PETapp</h4>
-                    <li class="active"><a href="@Url.Action("Index")">Home</a></li>
-                    <li><a href="">Perfil</a></li>
-                    <li><a href="@Url.Action("BuscarMascota")">Buscar  Perro</a></li>
+                    <h4>PetApp</h4>
+                    <li><a href="@Url.Action("Index")">Inicio</a></li>
+                    <li><a href="@Url.Action("RegistrarMascota")">Registrar Mascota</a></li>
+                    <li class="active"><a href="@Url.Action("BuscarMascota")">Buscar Mascota</a></li>
                     <li><a href="">Puesto mascota</a></li>
 
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <h4>Bienvenido @Login.Nombre   </h4>
-                    <li><a href="#about">About</a></li>
+                    @if (Login != null)
+                    {
+                        <h4>Bienvenido @Login.Nombre</h4>
+                    }
+                    <li><a href="@Url.Action("About")">Acerca de PetApp</a></li>
                     <li><a href="#contact">Contactos</a></li>
-                    <li class="active"><a href="./">Cerrar Sesion <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a id="logout" href="@Url.Action("Logout")" onclick="doLogout()">Cerrar Sesion <span class="sr-only">(current)</span></a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -79,7 +82,7 @@
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                 </p>
                 <div class="jumbotron">
-                    <h1>Near Pets</h1>
+                    <h1>Mascotas Cercanas</h1>
                 </div>
                 <div class="row">
                     <div class="col-xs-6 col-lg-4">
@@ -88,30 +91,30 @@
                         <table class="table table-user-information">
                             <tbody>
                                 <tr>
-                                    <td>Breed:</td>
+                                    <td>Raza:</td>
                                     <td>Siberian</td>
                                 </tr>
                                 <tr>
-                                    <td>Age:</td>
-                                    <td>2 years</td>
+                                    <td>Edad:</td>
+                                    <td>2 años</td>
                                 </tr>
                                 <tr>
                                     <td>Pedigree:</td>
-                                    <td>yes</td>
+                                    <td>si</td>
                                 </tr>
                                 <tr>
-                                    <td>Date of Birth</td>
-                                    <td>January/2013</td>
+                                    <td>Fecha de nacimiento</td>
+                                    <td>enero/2013</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Gender:</td>
-                                    <td>male</td>
+                                    <td>Genero:</td>
+                                    <td>Macho</td>
 
                                 </tr>
                                 <tr>
-                                    <td>Details:</td>
-                                    <td>My pet</td>
+                                    <td>Detalles:</td>
+                                    <td>Perrito dispuesto a formar su propia empresa</td>
                                 </tr>
 
 
@@ -124,30 +127,30 @@
                         <table class="table table-user-information">
                             <tbody>
                                 <tr>
-                                    <td>Breed:</td>
+                                    <td>Raza:</td>
                                     <td>Siberian</td>
                                 </tr>
                                 <tr>
-                                    <td>Age:</td>
-                                    <td>2 years</td>
+                                    <td>Edad:</td>
+                                    <td>2 años</td>
                                 </tr>
                                 <tr>
                                     <td>Pedigree:</td>
-                                    <td>yes</td>
+                                    <td>si</td>
                                 </tr>
                                 <tr>
-                                    <td>Date of Birth</td>
-                                    <td>January/2013</td>
+                                    <td>Fecha de nacimiento</td>
+                                    <td>enero/2013</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Gender:</td>
-                                    <td>male</td>
+                                    <td>Genero:</td>
+                                    <td>Macho</td>
 
                                 </tr>
                                 <tr>
-                                    <td>Details:</td>
-                                    <td>My pet</td>
+                                    <td>Detalles:</td>
+                                    <td>Perrito dispuesto a formar su propia empresa</td>
                                 </tr>
 
 
@@ -160,145 +163,145 @@
                         <table class="table table-user-information">
                             <tbody>
                                 <tr>
-                                    <td>Breed:</td>
+                                    <td>Raza:</td>
                                     <td>Siberian</td>
                                 </tr>
                                 <tr>
-                                    <td>Age:</td>
-                                    <td>2 years</td>
+                                    <td>Edad:</td>
+                                    <td>2 años</td>
                                 </tr>
                                 <tr>
                                     <td>Pedigree:</td>
-                                    <td>yes</td>
+                                    <td>si</td>
                                 </tr>
                                 <tr>
-                                    <td>Date of Birth</td>
-                                    <td>January/2013</td>
+                                    <td>Fecha de nacimiento</td>
+                                    <td>enero/2013</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Gender:</td>
-                                    <td>male</td>
+                                    <td>Genero:</td>
+                                    <td>Macho</td>
 
                                 </tr>
                                 <tr>
-                                    <td>Details:</td>
-                                    <td>My pet</td>
+                                    <td>Detalles:</td>
+                                    <td>Perrito dispuesto a formar su propia empresa</td>
                                 </tr>
 
 
                             </tbody>
                         </table>
                         <p><a class="btn btn-default" href="#" role="button">Contactar &raquo;</a></p>
-                    </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
                     <div class="col-xs-6 col-lg-4">
                         <div align="center"> <img alt="User Pic" src="@Url.Content("~/Content/images/4.jpg")" class="img-circle img-responsive"> </div>
                         <table class="table table-user-information">
                             <tbody>
                                 <tr>
-                                    <td>Breed:</td>
+                                    <td>Raza:</td>
                                     <td>Siberian</td>
                                 </tr>
                                 <tr>
-                                    <td>Age:</td>
-                                    <td>2 years</td>
+                                    <td>Edad:</td>
+                                    <td>2 años</td>
                                 </tr>
                                 <tr>
                                     <td>Pedigree:</td>
-                                    <td>yes</td>
+                                    <td>si</td>
                                 </tr>
                                 <tr>
-                                    <td>Date of Birth</td>
-                                    <td>January/2013</td>
+                                    <td>Fecha de nacimiento</td>
+                                    <td>enero/2013</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Gender:</td>
-                                    <td>male</td>
+                                    <td>Genero:</td>
+                                    <td>Macho</td>
 
                                 </tr>
                                 <tr>
-                                    <td>Details:</td>
-                                    <td>My pet</td>
+                                    <td>Detalles:</td>
+                                    <td>Perrito dispuesto a formar su propia empresa</td>
                                 </tr>
 
 
                             </tbody>
                         </table>
                         <p><a class="btn btn-default" href="#" role="button">Contactar &raquo;</a></p>
-                    </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
                     <div class="col-xs-6 col-lg-4">
                         <div align="center"> <img alt="User Pic" src="@Url.Content("~/Content/images/4.jpg")" class="img-circle img-responsive"> </div>
                         <table class="table table-user-information">
                             <tbody>
                                 <tr>
-                                    <td>Breed:</td>
+                                    <td>Raza:</td>
                                     <td>Siberian</td>
                                 </tr>
                                 <tr>
-                                    <td>Age:</td>
-                                    <td>2 years</td>
+                                    <td>Edad:</td>
+                                    <td>2 años</td>
                                 </tr>
                                 <tr>
                                     <td>Pedigree:</td>
-                                    <td>yes</td>
+                                    <td>si</td>
                                 </tr>
                                 <tr>
-                                    <td>Date of Birth</td>
-                                    <td>January/2013</td>
+                                    <td>Fecha de nacimiento</td>
+                                    <td>enero/2013</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Gender:</td>
-                                    <td>male</td>
+                                    <td>Genero:</td>
+                                    <td>Macho</td>
 
                                 </tr>
                                 <tr>
-                                    <td>Details:</td>
-                                    <td>My pet</td>
+                                    <td>Detalles:</td>
+                                    <td>Perrito dispuesto a formar su propia empresa</td>
                                 </tr>
 
 
                             </tbody>
                         </table>
                         <p><a class="btn btn-default" href="#" role="button">Contactar &raquo;</a></p>
-                    </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
                     <div class="col-xs-6 col-lg-4">
                         <div align="center"> <img alt="User Pic" src="@Url.Content("~/Content/images/4.jpg")" class="img-circle img-responsive"> </div>
                         <table class="table table-user-information">
                             <tbody>
                                 <tr>
-                                    <td>Breed:</td>
+                                    <td>Raza:</td>
                                     <td>Siberian</td>
                                 </tr>
                                 <tr>
-                                    <td>Age:</td>
-                                    <td>2 years</td>
+                                    <td>Edad:</td>
+                                    <td>2 años</td>
                                 </tr>
                                 <tr>
                                     <td>Pedigree:</td>
-                                    <td>yes</td>
+                                    <td>si</td>
                                 </tr>
                                 <tr>
-                                    <td>Date of Birth</td>
-                                    <td>January/2013</td>
+                                    <td>Fecha de nacimiento</td>
+                                    <td>enero/2013</td>
                                 </tr>
 
                                 <tr>
-                                    <td>Gender:</td>
-                                    <td>male</td>
+                                    <td>Genero:</td>
+                                    <td>Macho</td>
 
                                 </tr>
                                 <tr>
-                                    <td>Details:</td>
-                                    <td>My pet</td>
+                                    <td>Detalles:</td>
+                                    <td>Perrito dispuesto a formar su propia empresa</td>
                                 </tr>
 
 
                             </tbody>
                         </table>
                         <p><a class="btn btn-default" href="#" role="button">Contactar &raquo;</a></p>
-                    </div><!--/.col-xs-6.col-lg-4-->
+                    </div>
                 </div><!--/row-->
             </div><!--/.col-xs-12.col-sm-9-->
 
