@@ -53,5 +53,11 @@ namespace ParcialEvo.Controllers
             ViewBag.Message = "Your register pet page";
             return View();
         }
+
+        public ActionResult BuscarMascota()
+        {
+            ViewBag.Message = "Your searching pet page";
+            return View();
+        }
     }
 }
