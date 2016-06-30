@@ -184,22 +184,35 @@
             var email_val = $('#UserName').val();
             var password_val = $('#Password').val();
             var formData = { email: email_val, password: password_val }; //Array
+            var cont = 0;
 
-            $.ajax({
-                url: "http://ec2-52-40-149-74.us-west-2.compute.amazonaws.com/api/login",
-                type: "POST",
-                data: formData,
-                success: function (data, textStatus, jqXHR) {
-                    console.log(data);
-                    $('#Nombre').val(data.name);
-                    $('form#myform').submit();
-                    //window.location.replace("Index");
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(jqXHR.responseJSON);
-                    window.location.replace("Login");
-                }
-            });
+            if (email_val == "") {
+                $('#UserName')[0].placeholder = 'Por favor, llenar este campo';
+                cont = 1;
+            }
+            if (password_val == "") {
+                $('#Password')[0].placeholder = 'Por favor, llenar este campo';
+                cont = 1;
+            }
+
+            if (cont == 0) {
+
+                $.ajax({
+                    url: "http://ec2-52-40-149-74.us-west-2.compute.amazonaws.com/api/login",
+                    type: "POST",
+                    data: formData,
+                    success: function (data, textStatus, jqXHR) {
+                        console.log(data);
+                        $('#Nombre').val(data.name);
+                        $('form#myform').submit();
+                        //window.location.replace("Index");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR.responseJSON);
+                        window.location.replace("Login");
+                    }
+                });
+            }
         }
     </script>
     <script>window.jQuery || document.write('<script src="@Url.Content("~/Content/assets/js/vendor/jquery.min.js")"><\/script>')</script>
