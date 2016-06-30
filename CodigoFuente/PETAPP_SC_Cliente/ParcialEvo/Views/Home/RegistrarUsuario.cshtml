@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="images/favicon.ico">
-    <title>PetAPP - Login</title>
+    <title>PettAPP</title>
     <!-- Bootstrap core CSS -->
     <link href="@Url.Content("~/Content/dist/css/bootstrap.min.css")" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -52,7 +52,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <h4>PETAPP</h4>
+                    <h4>PetApp</h4>
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="">About</a></li>
                     <li><a href="">Find Pet</a></li>
@@ -163,24 +163,43 @@
                     var name_val = $('#Name').val();
                     var email_val = $('#Email').val();
                     var password_val = $('#Password').val();
-                    var formData = { name: name_val, email: email_val, password: password_val }; //Array
+                    var cont = 0;
 
-                    $.ajax({
-                        url: "http://ec2-52-40-149-74.us-west-2.compute.amazonaws.com/api/create/user",
-                        type: "POST",
-                        data: formData,
-                        success: function (data, textStatus, jqXHR) {
-                            console.log(data);
-                            $('#Nombre').val(data.name);
-                            $('form#myform').submit();
-                            window.location.replace("Login");
+                    if (name_val == "") {
+                        $('#Name')[0].placeholder = 'Por favor, llenar este campo';
+                        cont = 1;
+                    }
+                    if (email_val == "") {
+                        $('#Email')[0].placeholder = 'Por favor, llenar este campo';
+                        cont = 1;
+                    }
+                    if (password_val == "") {
+                        $('#Password')[0].placeholder = 'Por favor, llenar este campo';
+                        cont = 1;
+                    }
 
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            console.log(jqXHR.responseJSON);
-                            window.location.replace("RegistrarUsuario");
-                        }
-                    });
+                    if (cont == 0) {
+
+                        var formData = { name: name_val, email: email_val, password: password_val }; //Array
+
+                        $.ajax({
+                            url: "http://ec2-52-40-149-74.us-west-2.compute.amazonaws.com/api/create/user",
+                            type: "POST",
+                            data: formData,
+                            success: function (data, textStatus, jqXHR) {
+                                console.log(data);
+                                $('#Nombre').val(data.name);
+                                $('form#myform').submit();
+                                alert("El usuario se ha registrado correctamente!");
+                                window.location.replace("Login");
+
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                console.log(jqXHR.responseJSON);
+                                window.location.replace("RegistrarUsuario");
+                            }
+                        });
+                    }
                 }
             </script>
 

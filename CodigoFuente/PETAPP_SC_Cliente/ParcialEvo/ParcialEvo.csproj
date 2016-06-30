@@ -175,6 +175,7 @@
     <Content Include="Content\assets\css\src\docs.css" />
     <Content Include="Content\assets\css\src\pygments-manni.css" />
     <Content Include="Content\assets\flash\ZeroClipboard.swf" />
+    <Content Include="Content\images\aboutimg.jpg" />
     <Content Include="Content\assets\img\components.png" />
     <Content Include="Content\assets\img\devices.png" />
     <Content Include="Content\assets\img\expo-lyft.jpg" />
