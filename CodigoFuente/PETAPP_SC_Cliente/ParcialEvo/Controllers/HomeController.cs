@@ -59,5 +59,11 @@ namespace ParcialEvo.Controllers
             ViewBag.Message = "Your searching pet page";
             return View();
         }
+
+        public ActionResult Perfil()
+        {
+            ViewBag.Message = "Your profile page";
+            return View();
+        }
     }
 }
