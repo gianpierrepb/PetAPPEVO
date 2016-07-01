@@ -51,7 +51,8 @@ namespace ParcialEvo.Controllers
         public ActionResult RegistrarMascota()
         {
             ViewBag.Message = "Your register pet page";
-            return View();
+            var model = GetGender();
+            return View(model);
         }
 
         public ActionResult BuscarMascota()
@@ -59,5 +60,38 @@ namespace ParcialEvo.Controllers
             ViewBag.Message = "Your searching pet page";
             return View();
         }
+
+        public ActionResult Perfil()
+        {
+            ViewBag.Message = "Your profile page";
+            return View();
+        }
+
+
+        private RegistrarMascotaViewModel GetGender()
+        {
+            // just a stub, in lieu of a database
+
+            var model = new RegistrarMascotaViewModel
+            {
+                Genders = new List<Gender>
+                {
+                  new Gender
+                  {
+                        GenderId = 0,
+                        GenderName = "Hembra"
+                  },
+                  new Gender
+                  {
+                        GenderId = 1,
+                        GenderName = "Macho"
+                  },
+               }
+            };
+
+            return model;
+        }
+
+
     }
 }
