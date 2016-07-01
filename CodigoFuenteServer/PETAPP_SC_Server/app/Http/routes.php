@@ -1,7 +1,7 @@
 <?php
 
-
 Route::get('/ie', function () {
+
     return view('welcome');
 });
 
