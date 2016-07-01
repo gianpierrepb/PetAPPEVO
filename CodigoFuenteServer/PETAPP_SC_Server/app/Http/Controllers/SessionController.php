@@ -28,7 +28,7 @@ class SessionController  extends Controller
 			$user_response = $this->userResponse($user);
 			return response()->json($user_response,200);
 		} else {
-			$response = "the user have incorrect credentials ";
+			$response = "there are incorrect credentials ";
 			return response()->json($response,422);
 		}
 	}
@@ -81,7 +81,7 @@ class SessionController  extends Controller
 
 		$user_id = DB::table('users')->insertGetId($user_array);
 
-		$response = "the user number ".$user_id." have been created ";
+		$response = "the user with ID ".$user_id." have been created ";
 
 		return response()->json($response,200);
 
