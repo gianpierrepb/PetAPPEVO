@@ -1,7 +1,7 @@
 <?php
 
+Route::get('/ie', function () {
 
-Route::get('/inde', function () {
     return view('welcome');
 });
 
