@@ -1,7 +1,7 @@
 <?php
 
 
-Route::get('/inde', function () {
+Route::get('/indece', function () {
     return view('welcome');
 });
 
