@@ -36,16 +36,19 @@ class SessionController  extends Controller
 	private function userResponse($user = null)
 	{
 
+
 		$user_responses = [];
 
 		if($user != null) {
 			$user_responses= [
+
 				'name' => $user->name,
 				'email' => $user->email
 			];
 		}
+
 		return $user_responses;
-	}
+}
 
 	private function setUpUser($name , $email, $password)
 	{
