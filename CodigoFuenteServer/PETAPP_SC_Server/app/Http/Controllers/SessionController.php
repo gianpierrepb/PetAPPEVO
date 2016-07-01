@@ -53,16 +53,19 @@ class SessionController  extends Controller
 	private function setUpUser($name , $email, $password)
 	{
 
-		$array = [];
 
-		$array= [
+		$user_array = [];
+
+		$user_array= [
+
 			'name' => $name,
 			'email' => $email,
 			'password' =>$password,
 			'remember_token'=> NULL
 		];
 
-		return $array;
+
+		return $user_array;
 	}
 
 
