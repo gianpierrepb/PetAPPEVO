@@ -30,6 +30,7 @@ namespace ParcialEvo.Models
 
     public class LoginViewModel
     {
+        public int Id { get; set; }
         public string Nombre { get; set; }
         [Required]
         [Display(Name = "Nombre de usuario")]
