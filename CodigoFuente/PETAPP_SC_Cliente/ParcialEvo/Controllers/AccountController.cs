@@ -38,6 +38,9 @@ namespace ParcialEvo.Controllers
 
         //
         // POST: /Account/Login
+
+
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -49,6 +52,7 @@ namespace ParcialEvo.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
+                    //return RedirectToAction("Index", "Home");
                     return RedirectToLocal(returnUrl);
                 }
                 else
@@ -60,6 +64,8 @@ namespace ParcialEvo.Controllers
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
         }
+
+
 
         //
         // GET: /Account/Register
@@ -318,6 +324,32 @@ namespace ParcialEvo.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterPet(RegistrarMascotaViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var pet = model;
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    AddErrors(result);
+                }
+            }
+
+            // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
+            return View(model);
+        }
+
+
+
 
         #region Aplicaciones auxiliares
         // Used for XSRF protection when adding external logins

@@ -1,12 +1,12 @@
 ﻿@using ParcialEvo.Models
-
+@model ParcialEvo.Models.RegistrarMascotaViewModel
 @{
     ViewBag.Title = "RegistrarMascota";
 
     var Login = Session["LOGIN"] as LoginViewModel;
     Layout = null;
 }
-
+<h2>@ViewBag.Title</h2>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,12 +17,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="images/favicon.ico">
-    <title>Carousel Template for Bootstrap</title>
+    <title>PettAPP</title>
     <!-- Bootstrap core CSS -->
     <link href="@Url.Content("~/Content/dist/css/bootstrap.min.css")" rel="stylesheet">
-    ><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="@Url.Content("~/Content/assets/css/ie10-viewport-bug-workaround.css")" rel="stylesheet">
-    ><!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="@Url.Content("~/Content/assets/js/ie-emulation-modes-warning.js")"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -32,7 +32,7 @@
     <![endif]-->
     <!-- Custom styles for this template -->
     <link href="@Url.Content("~/Content/carousel.css")" rel="stylesheet">
-    >
+    
 </head>
 <!-- NAVBAR
 ================================================== -->
@@ -51,19 +51,23 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <h4>PETapp</h4>
-                    <li class="active"><a href="@Url.Action("Index")">Home</a></li>
-                    <li><a href="">Perfil</a></li>
-                    <li><a href="">Buscar  Perro</a></li>
-                    <li><a href="">Puesto mascota</a></li>
+                    <h4>PetApp</h4>
+                    <li><a href="@Url.Action("Index")">Inicio</a></li>
+                    <li><a href="@Url.Action("Perfil")">Perfil</a></li>
+                    <li class="active"><a href="@Url.Action("RegistrarMascota")">Registrar Mascota</a></li>
+                    <li><a href="@Url.Action("BuscarMascota")">Buscar Mascota</a></li>
+                  
 
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <h4>Bienvenido @Login.Nombre   </h4>
-                    <li><a href="#about">About</a></li>
+                    @if (Login != null)
+                    {
+                        <h4>Bienvenido @Login.Nombre</h4>
+                    }
+                    <li><a href="@Url.Action("About")">Acerca de PetApp</a></li>
                     <li><a href="#contact">Contactos</a></li>
-                    <li class="active"><a href="./">Cerrar Sesion <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a id="logout" href="@Url.Action("Logout")" onclick="doLogout()">Cerrar Sesion <span class="sr-only">(current)</span></a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -77,31 +81,31 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-                <a href="edit.html">Edit Profile</a>
-
-                <a href="edit.html">Logout</a>
+               
                 <br>
-                <p class=" text-info">May 05,2014,03:00 pm </p>
+          
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
 
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Sheena Kristin A.Eschor</h3>
+                        <h3 class="panel-title">Registrar Mascota</h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-3 col-lg-3 " align="center">  <img class="img-circle" src="@Url.Content("~/Content/images/4.jpg")" alt="Generic placeholder image" width="140" height="140"> ><a href="">Seleccionar foto</a> </div>
+                            <div class="col-md-3 col-lg-3 " align="center">  <img class="img-circle" src="@Url.Content("~/Content/images/4.jpg")" alt="Generic placeholder image" width="140" height="140"><a href="">Seleccionar foto</a> </div>
 
-                            <div class=" col-md-9 col-lg-9 ">
+                            @*///////////////////////////////////////////////////////////////7*@
+                          
+                              @*<div class=" col-md-9 col-lg-9 ">
                                 <table class="table table-user-information">
                                     <tbody>
                                         <tr>
                                             <td>Breed</td>
                                             <td>
                                                 <select>
-                                                    <option value="volvo">select Breed</option>
+                                                    <option value="volvo">Seleccionar Raza</option>
                                                     <option value="saab">Saab</option>
                                                     <option value="Affenpinscher">Affenpinscher</option>
                                                     <option value="Akita">Akita</option>
@@ -117,22 +121,18 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Date of Birth:</td>
-                                            <td><input type="date" name="bday"></td>
-                                        </tr>
-                                        <tr>
                                             <td>Edad:</td>
                                             <td><input type="text" name="edad"></td>
                                         </tr>
                                         <tr>
-                                            <td>Gender</td>
-                                            <td><input type="checkbox" name="genero" value="macho">Macho</td>
-                                            <td><input type="checkbox" name="genero" value="hembra">Hembra </td>
+                                            <td>Genero:</td>
+                                            <td><input type="checkbox" name="genero" value="macho">Macho
+                                            <input type="checkbox" name="genero" value="hembra">Hembra </td>
                                         </tr>
                                         <tr>
-                                            <td>Pedigree</td>
-                                            <td><input type="checkbox" name="pedigree" value="si">Si</td>
-                                            <td><input type="checkbox" name="pedigree" value="no">No </td>
+                                            <td>Pedigree:</td>
+                                            <td><input type="checkbox" name="pedigree" value="si">Si
+                                            <input type="checkbox" name="pedigree" value="no">No </td>
                                         </tr>
                                         <tr>
                                             <td>Detalles:</td>
@@ -144,9 +144,73 @@
                                 </table>
 
 
-                                <a href="#" class="btn btn-primary">Post</a>
-                            </div>
-                        </div>
+                                <a href="#" class="btn btn-primary">Registrar</a>
+                                <a href="#" class="btn btn-primary">Cancelar</a>
+                            </div>*@
+
+                            
+                            <div id="lo-que-vamos-a-copiar" class="col-md-9 col-lg-9">
+
+                                            @*<div class="col-xs-4">
+                                               <div class="well well-sm">*@
+
+                                            @using (Html.BeginForm())
+                                            {
+                                                <div class="form-group">
+                                                    <label for="name">Nombre de la mascota:</label>
+                                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control input-lg" })
+                                                </div>
+
+                                                                @*<div class="form-group">
+                                                <label for="breed">Raza:</label>
+                                                @Html.DropDownListFor(x => x.Breed, Model.BreedList)
+                                            </div>*@
+
+                                                <div class="form-group">
+                                                    <label for="age">Edad:</label>
+                                                    @Html.TextBoxFor(x => x.Age, new { @class = "form-control input-lg" })
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    @Html.LabelFor(x => x.Breed): 
+                                                    @Html.DropDownListFor(x => x.Breed, RegistrarMascotaViewModel.BreedList2)
+                                                </div>
+
+                                                @*<div>
+                                                    <label>Genero: </label>
+                                                    <div>
+                                                        <ul>
+                                                            @foreach (var item in Model.Genders)
+                                                            {
+                                                                <li>
+                                                                    @Html.RadioButtonFor(x => x.SelectedGender, item.GenderId, new { id = item.GenderId })
+                                                                    <label @*for="Response: @item.GenderId"*@ @*>*@ @*@item.GenderName*@ @*</label>*@
+                                                                @*</li>
+                                                            }*@
+                                                        @*</ul>
+
+                                                    </div>
+                                                </div>*@
+
+                                                <div class="form-group">
+                                                    <label for="gender">Genero:</label>
+                                                    @Html.RadioButtonFor(x => x.Gender, 1, new { @checked = true }) Macho
+                                                    @Html.RadioButtonFor(x => x.Gender, 0) Hembra
+                                                </div>
+
+
+                                                <input type="button" class="btn btn-danger btn-lg btn-block" onclick="LOAD()" value="Registrar Mascota" />
+                                                <a href="@Url.Action("Index")" type="button" class="btn btn-primary btn-lg btn-block">Volver</a>
+                                            }
+                                    @*</div>
+                </div>*@
+
+                                </div>
+
+
+
+                @*//////////////////////////////////////////////////*@
+            </div>
                     </div>
 
 
@@ -154,14 +218,57 @@
             </div>
         </div>
     </div>
-    <hr class="featurette-divider">
+  
+      @*<hr class="featurette-divider">
 
         <!-- FOOTER -->
         <footer>
             <p class="pull-right"><a href="#">Back to top</a></p>
             <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
         </footer>
-    </div><!-- /.container -->
+    <!-- /.container -->*@
+
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        function LOAD() {
+
+            var name_val = $('#Name').val();
+            var breed_val = $('#Breed').val();
+            var age_val = $('#Age').val();
+            var gender_val = $('#Gender').val();
+            //var gender_val = "dog";
+            var user_val = "1";
+            var cont = 0;
+
+
+            if (cont == 0) {
+
+                var formData = { name: name_val, gender: gender_val, user_id: user_val, age: age_val, breed: breed_val }; //Array
+
+                $.ajax({
+                    url: "http://ec2-52-40-149-74.us-west-2.compute.amazonaws.com/api/create/dogs",
+                    type: "POST",
+                    data: formData,
+                    success: function (data, textStatus, jqXHR) {
+
+                        console.log(data);
+                        $('form#myform').submit();
+                        alert("La mascota se ha registrado correctamente!");
+                        window.location.replace("Index");
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR.responseJSON);
+                        window.location.replace("RegistrarMascota");
+                    }
+                });
+            }
+        }
+    </script>
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

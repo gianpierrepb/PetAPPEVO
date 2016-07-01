@@ -175,6 +175,7 @@
     <Content Include="Content\assets\css\src\docs.css" />
     <Content Include="Content\assets\css\src\pygments-manni.css" />
     <Content Include="Content\assets\flash\ZeroClipboard.swf" />
+    <Content Include="Content\images\aboutimg.jpg" />
     <Content Include="Content\assets\img\components.png" />
     <Content Include="Content\assets\img\devices.png" />
     <Content Include="Content\assets\img\expo-lyft.jpg" />
@@ -275,6 +276,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\RegistrarUsuario.cshtml" />
     <Content Include="Views\Home\RegistrarMascota.cshtml" />
+    <Content Include="Views\Home\BuscarMascota.cshtml" />
+    <Content Include="Views\Home\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
